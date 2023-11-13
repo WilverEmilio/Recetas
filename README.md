@@ -8,7 +8,7 @@ cosas por tener instaladas
 - composer
 Nota: mysql y composer vienen juntamente con xampp
 
-#Pasos para la instalación
+# Pasos para la instalación
 crear una carpeta llamada recetas en cualquier lado, preferiblemente en donde se encuentra instalado xampp y en la carpeta de htdocs 
 1. Clonar el repositorio
 2. Ver si te se tiene composer, php y mysql en las variables de entorno
