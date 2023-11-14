@@ -77,14 +77,11 @@ export default {
   }),
   methods: {
     setActiveSection(section) {
-      this.showPreloader = true; // Mostrar preloader al hacer clic
+      this.activeSection = section;
+      this.showPreloader = true;
     },
     onPreloaderLoad() {
-      // Este evento se dispara cuando el gif se ha cargado completamente
-      setTimeout(() => {
-        this.activeSection = section;
-        this.showPreloader = false; // Ocultar preloader después de la transición
-      }, 1000); // Ajusta el tiempo según tus necesidades
+      this.showPreloader = false; // Ocultar preloader después de la carga del gif
     },
   },
 };
@@ -113,7 +110,6 @@ export default {
   align-items: center;
   background: rgba(255, 255, 255, 0.9); /* Fondo blanco semitransparente */
 }
-
 .main-bg {
   background-color: #f2f2f2;
   background-image: url('./assets/img/fondovegetales.jpg');
