@@ -1,16 +1,16 @@
 {
-    "name": "parzibyte/recetas",
-    "description": "Software para crear y compartir recetas de cocina",
+    "name": "recetas/recetas",
+    "description": "Web para crear y compartir recetas de cocina",
     "type": "project",
     "authors": [
         {
-            "name": "Luis Cabrera Benito",
-            "email": "parzibyte@gmail.com"
+            "name": "Proyecto PrograWeb",
+            "email": "maverick_ruiz@umes.edu.gt"
         }
     ],
     "autoload": {
         "psr-4": {
-            "Parzibyte\\": "Parzibyte/"
+            "Recetas\\": "Recetas/"
         }
     },
     "require": {}
