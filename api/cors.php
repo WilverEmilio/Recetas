@@ -2,7 +2,7 @@
 ?>
 <?php
 include_once "vendor/autoload.php";
-$produccion = false;
+$produccion = true;
 if (!$produccion) {
     $dominioPermitido = $_SERVER['HTTP_ORIGIN'];
     header("Access-Control-Allow-Origin: $dominioPermitido");
