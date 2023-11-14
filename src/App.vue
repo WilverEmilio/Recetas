@@ -1,4 +1,6 @@
 <template>
+  <div id="app">
+    <div class="main-bg">
   <div>
     <b-navbar class="oculto-impresion" style="background: linear-gradient(to right, #e75528, #ffba97);">
       <template #brand>
@@ -58,6 +60,8 @@
       </div>
     </footer>
   </div>
+</div>
+  </div>
 </template>
 
 <script src="js/bootstrap.min.js"></script>
@@ -108,6 +112,15 @@ export default {
   justify-content: center;
   align-items: center;
   background: rgba(255, 255, 255, 0.9); /* Fondo blanco semitransparente */
+}
+
+.main-bg {
+  background-color: #f2f2f2;
+  background-image: url('./assets/img/fondovegetales.jpg');
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  background-blend-mode: overlay;
 }
 
 </style>

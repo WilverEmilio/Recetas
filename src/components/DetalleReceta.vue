@@ -59,12 +59,11 @@
         </div>
         <div class="columns" v-show="imprimiendo">
           <div class="column">
-            <div class="content has-text-centered">
+            <div class="print-footer">
               <p>
-                <strong>Gestión de recetas - Software de recetario </strong
-                >creado y mantenido con
-                <b-icon icon="heart" type="is-danger"></b-icon> por
-                <a href="https://parzibyte.me/blog">Parzibyte</a>
+                <b-icon icon="copyright"></b-icon>
+                <strong>WHACK RECETAS </strong
+                >¡Gracias por usar nuestra web!
               </p>
             </div>
           </div>
@@ -117,4 +116,13 @@ export default {
 };
 </script>
 <style >
+@media print {
+  .print-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+  }
+}
 </style>
