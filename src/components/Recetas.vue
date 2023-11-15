@@ -1,11 +1,11 @@
 <template>
   <div>
-    <div class="columns">
+    <div class="columns">  <!-- Aqui se muestran los botones de agregar y volver -->
       <div class="column">
         <b-button type="is-primary" @click="agregarReceta()">
           <b-icon icon="plus"></b-icon>&nbsp;Agregar
         </b-button>
-        <b-table :data="recetas">
+        <b-table :data="recetas"> <!-- Aqui se muestra la tabla de recetas -->
           <b-table-column
             field="nombre"
             label="Nombre"
@@ -53,9 +53,9 @@
     </div>
   </div>
 </template>
-<script>
+<script> // Importa el servicio de recetas
 import RecetasService from "../services/RecetasService";
-export default {
+export default { // Exporta el componente
   data: () => ({
     recetas: [],
     cargando: false,
@@ -63,13 +63,13 @@ export default {
   async mounted() {
     await this.obtenerRecetas();
   },
-  methods: {
+  methods: { // Métodos del componente
     async obtenerRecetas() {
       this.cargando = true;
       this.recetas = await RecetasService.obtenerRecetas();
       this.cargando = false;
     },
-    editarReceta(receta) {
+    editarReceta(receta) { // Edita la receta
       this.$router.push({
         name: "EditarReceta",
         params: {
@@ -77,8 +77,8 @@ export default {
         },
       });
     },
-    async eliminarReceta(receta) {
-      this.$buefy.dialog.confirm({
+    async eliminarReceta(receta) { // Elimina la receta
+      this.$buefy.dialog.confirm({ // Muestra un dialogo de confirmación
         title: "Eliminando receta",
         message: "¿Eliminar? esta opción no se puede deshacer",
         confirmText: "Sí, eliminar",
@@ -92,7 +92,7 @@ export default {
         },
       });
     },
-    agregarReceta() {
+    agregarReceta() { // Agrega una receta
       this.$router.push({
         name: "NuevaReceta",
       });

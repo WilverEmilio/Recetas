@@ -5,7 +5,7 @@
         <h4 class="is-size-4">Editando receta</h4>
       </div>
     </div>
-    <div class="columns is-desktop is-multiline">
+    <div class="columns is-desktop is-multiline"> <!-- Aqui se muestran los componentes -->
       <div class="column is-two-thirds">
         <b-field grouped>
           <b-field label="Nombre">
@@ -28,7 +28,7 @@
           ></b-input>
         </b-field>
       </div>
-      <div class="column is-one-third">
+      <div class="column is-one-third"> <!-- Aqui se muestra la foto de la receta -->
         <foto-de-receta :receta="receta"></foto-de-receta>
         <b-field
           message="Si no quieres reemplazar la foto, deja este campo intacto"
@@ -46,7 +46,7 @@
       <div class="column has-text-centered">
         <h2 class="is-size-4">Ingredientes</h2>
         <table class="table is-fullwidth">
-          <thead>
+          <thead> <!-- Aqui se muestran los ingredientes -->
             <tr>
               <td>Cantidad</td>
               <td>Unidad medida</td>
@@ -79,7 +79,7 @@
                 </b-field>
               </td>
               <td>
-                <b-field>
+                <b-field> <!-- Aqui se muestra el nombre del ingrediente -->
                   <b-input
                     placeholder="Nombre de ingrediente"
                     v-model="ingrediente.nombre"
@@ -127,7 +127,7 @@
               <b-icon icon="delete"></b-icon>
             </b-button>
           </p>
-          <p class="control">
+          <p class="control"> <!-- Aqui se muestra el boton para agregar un paso -->
             <b-button
               @click="agregarPaso()"
               :disabled="!deberiaHabilitarBotonAgregarPaso()"
@@ -141,7 +141,7 @@
       </div>
     </div>
     <div class="columns">
-      <div class="column">
+      <div class="column"> <!-- Aqui se muestran los botones de guardar y volver -->
         <b-button
           @click="guardarReceta()"
           :disabled="
@@ -159,15 +159,15 @@
   </div>
 </template>
 <script>
-import RecetasService from "../services/RecetasService";
-import Constantes from "../Constantes";
-import FotoDeReceta from "./FotoDeReceta.vue";
-export default {
-  components: { FotoDeReceta },
-  data: () => ({
+import RecetasService from "../services/RecetasService"; // Importa el servicio de recetas
+import Constantes from "../Constantes"; // Importa las constantes
+import FotoDeReceta from "./FotoDeReceta.vue"; // Importa el componente FotoDeReceta
+export default { // Exporta el componente
+  components: { FotoDeReceta }, // Componentes del componente
+  data: () => ({ // Datos del componente
     unidadesMedida: Constantes.UNIDADES_MEDIDA,
     cargando: false,
-    receta: {
+    receta: { // Receta que se va a editar
       nombre: "",
       descripcion: "",
       porciones: 1,
@@ -188,7 +188,7 @@ export default {
       }
       return RecetasService.ubicacionFoto(this.receta.foto);
     },
-    limpiarFormulario() {
+    limpiarFormulario() { // Limpia el formulario
       this.receta = {
         nombre: "",
         descripcion: "",
@@ -200,10 +200,10 @@ export default {
       this.agregarIngrediente();
       this.foto = null;
     },
-    eliminarPaso(indice) {
+    eliminarPaso(indice) { // Elimina un paso
       this.receta.pasos.splice(indice, 1);
     },
-    eliminarIngrediente(indice) {
+    eliminarIngrediente(indice) { // Elimina un ingrediente
       this.receta.ingredientes.splice(indice, 1);
     },
     agregarPaso() {

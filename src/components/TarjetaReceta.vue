@@ -1,9 +1,9 @@
 <template>
-  <div class="receta-container">
+  <div class="receta-container"> <!-- Contenedor de la receta -->
     <div class="receta-border"></div>
-  <div class="card">
+  <div class="card"> <!-- Tarjeta de la receta -->
     <a @click="verDetalle()" class= "card-image">
-      <foto-de-receta :receta="receta"></foto-de-receta></a>
+      <foto-de-receta :receta="receta"></foto-de-receta></a> <!-- Muestra la foto de la receta -->
     <div class="card-content">
       <div class="media">
         <div class="media-content">
@@ -21,9 +21,9 @@
 </div>
 </template>
 <script>
-import FotoDeReceta from "./FotoDeReceta.vue";
-export default {
-  props: ["receta"],
+import FotoDeReceta from "./FotoDeReceta.vue"; // Importa el componente FotoDeReceta
+export default { // Exporta el componente
+  props: ["receta"], // Propiedades del componente
   components: { FotoDeReceta },
   methods: {
     verDetalle() {
@@ -37,11 +37,11 @@ export default {
   },
 };
 </script>
-<style>
+<style> /* Estilos específicos del componente */
 .tarjeta-receta {
   margin: 10px; /* Ajusta el valor según sea necesario */
 }
-.receta-container {
+.receta-container { /* Contenedor de la receta */
   position: relative;
 }
 

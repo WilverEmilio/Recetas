@@ -1,14 +1,14 @@
-<template>
+<template> <!-- Aqui el componente principal el cual muestra a simple vista todos los demás componentes -->
   <div id="app">
     <div class="main-bg">
   <div>
     <b-navbar class="oculto-impresion" style="background: linear-gradient(to right, #e75528, #ffba97);">
       <template #brand>
-        <b-navbar-item tag="a" target="_blank" :href="logo">
+        <b-navbar-item tag="a" target="_blank" :href="logo"> <!-- Aqui se muestra el logo de la web -->
           <img :src="logo" style="min-height: 85px" />
         </b-navbar-item>
       </template>
-      <template #start>
+      <template #start> <!-- Aqui se muestran los botones de navegación -->
         <b-navbar-item
           tag="router-link"
           :to="{ name: 'Recetario' }"
@@ -46,7 +46,7 @@
         <b-navbar-item tag="div"></b-navbar-item>
       </template>
     </b-navbar>
-    <section class="section sin-espacios-al-imprimir">
+    <section class="section sin-espacios-al-imprimir"> <!-- Aqui se muestran los componentes -->
       <transition name="fade" mode="out-in">
         <router-view />
       </transition>
@@ -65,7 +65,7 @@
 </template>
 
 <script src="js/bootstrap.min.js"></script>
-<script>
+<script> //-- Aqui se importan los componentes -->
 import Logo from "@/assets/img/Whack-Dark.png";
 
 export default {
