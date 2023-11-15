@@ -1,13 +1,13 @@
 <template>
   <div>
-    <div class="columns">
+    <div class="columns"> <!-- Aqui se muestra el titulo de la pagina -->
       <div class="column has-text-centered">
         <h4 class="is-size-4">Nueva receta</h4>
       </div>
     </div>
-    <div class="columns is-desktop is-multiline">
+    <div class="columns is-desktop is-multiline"> <!-- Aqui se muestran los componentes -->
       <div class="column is-two-thirds">
-        <b-field grouped>
+        <b-field grouped> <!-- Aqui se muestra el nombre y las porciones de la receta -->
           <b-field label="Nombre">
             <b-input
               placeholder="Nombre de la receta"
@@ -29,7 +29,7 @@
         </b-field>
       </div>
       <div class="column is-one-third">
-        <b-field grouped>
+        <b-field grouped> <!-- Aqui se muestra la foto de la receta -->
           <b-field label="Foto" message="Se recomienda una de al menos 2000 px">
             <b-upload v-model="foto" drag-drop accept="image/png,image/jpeg">
               <section class="section">
@@ -90,7 +90,7 @@
                   ></b-input>
                 </b-field>
               </td>
-              <td>
+              <td> <!-- Aqui se muestra el boton de eliminar ingrediente -->
                 <b-button
                   v-show="puedeMostrarBotonEliminarIngrediente()"
                   @click="eliminarIngrediente(indice_ingrediente)"
@@ -99,7 +99,7 @@
                   <b-icon icon="delete"></b-icon>
                 </b-button>
               </td>
-              <td>
+              <td> <!-- Aqui se muestra el boton de agregar ingrediente -->
                 <b-button
                   :disabled="!deberiaHabilitarBotonAgregarIngrediente()"
                   v-show="
@@ -113,7 +113,7 @@
             </tr>
           </tbody>
         </table>
-      </div>
+      </div> <!-- Aqui se muestra el boton de agregar paso -->
       <div class="column is-half">
         <h2 class="is-size-4">Pasos</h2>
         <b-field
@@ -223,7 +223,7 @@ export default {
         ultimoIngrediente.unidadMedida
       );
     },
-    puedeMostrarBotonAgregarIngrediente(indice_ingrediente) {
+    puedeMostrarBotonAgregarIngrediente(indice_ingrediente) { // Aqui se muestra el boton de agregar ingrediente
       const esElUltimoIngrediente =
         indice_ingrediente === this.receta.ingredientes.length - 1;
       if (this.receta.ingredientes.length <= 0 || esElUltimoIngrediente) {
@@ -232,14 +232,14 @@ export default {
         return false;
       }
     },
-    puedeMostrarBotonEliminarPaso() {
+    puedeMostrarBotonEliminarPaso() { // Aqui se muestra el boton de eliminar paso
       if (this.receta.pasos.length <= 1) {
         return false;
       } else {
         return true;
       }
     },
-    deberiaHabilitarBotonAgregarPaso() {
+    deberiaHabilitarBotonAgregarPaso() { // Aqui se muestra el boton de agregar paso
       if (this.receta.pasos.length <= 0) return false;
       if (this.receta.pasos[this.receta.pasos.length - 1]) {
         return true;
@@ -247,7 +247,7 @@ export default {
         return false;
       }
     },
-    puedeMostrarBotonAgregarPaso(indicePaso) {
+    puedeMostrarBotonAgregarPaso(indicePaso) { // Aqui se muestra el boton de agregar paso
       const esElUltimoPaso = indicePaso === this.receta.pasos.length - 1;
       if (this.receta.pasos.length <= 0 || esElUltimoPaso) {
         return true;
@@ -255,13 +255,13 @@ export default {
         return false;
       }
     },
-    async guardarReceta() {
+    async guardarReceta() { // Aqui se guarda la receta
       this.cargando = true;
       const respuesta = await RecetasService.agregarReceta(
         this.receta,
         this.foto
       );
-      if (respuesta) {
+      if (respuesta) { // Aqui se muestra el mensaje de receta guardada
         this.$buefy.toast.open("Receta guardada");
         this.limpiarFormulario();
       } else {

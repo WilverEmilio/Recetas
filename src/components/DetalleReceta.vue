@@ -1,6 +1,6 @@
-<template>
+<template> <!-- Aqui se muestra el detalle de la receta -->
   <div class="columns">
-    <div class="column" style="padding: 0; margin: 0">
+    <div class="column" style="padding: 0; margin: 0"> <!-- Aqui se muestra el detalle de la receta -->
       <div class="columns">
         <div class="column is-one-third">
           <foto-de-receta :receta="receta"></foto-de-receta>
@@ -72,32 +72,32 @@
     </div>
   </div>
 </template>
-<script>
-import Constantes from "../Constantes";
-import RecetasService from "../services/RecetasService";
-import FotoDeReceta from "./FotoDeReceta.vue";
-export default {
-  components: { FotoDeReceta },
-  data: () => ({
+<script> //-- Aqui se importan los componentes -->
+import Constantes from "../Constantes"; // Aqui se importan los componentes
+import RecetasService from "../services/RecetasService"; // Importa el servicio de recetas
+import FotoDeReceta from "./FotoDeReceta.vue"; // Importa el componente FotoDeReceta
+export default { // Exporta el componente
+  components: { FotoDeReceta }, // Componentes del componente
+  data: () => ({ // Datos del componente
     receta: {},
     porciones: null,
     imprimiendo: false,
   }),
-  methods: {
-    async imprimir() {
-      this.imprimiendo = true;
-      const tituloOriginal = document.title;
-      document.title = "Receta de " + this.receta.nombre;
-      await this.$nextTick();
-      window.print();
-      document.title = tituloOriginal;
-      this.imprimiendo = false;
+  methods: { // Métodos del componente
+    async imprimir() { // Imprime la receta
+      this.imprimiendo = true; // Muestra el footer de impresión
+      const tituloOriginal = document.title; // Guarda el titulo original
+      document.title = "Receta de " + this.receta.nombre; // Cambia el titulo
+      await this.$nextTick(); // Espera a que se actualice el DOM
+      window.print(); // Imprime la receta
+      document.title = tituloOriginal; // Restaura el titulo original
+      this.imprimiendo = false; // Oculta el footer de impresión
     },
-    nombreIngrediente(ingrediente) {
-      if (ingrediente.unidadMedida === Constantes.AL_GUSTO) {
+    nombreIngrediente(ingrediente) { // Devuelve el nombre del ingrediente
+      if (ingrediente.unidadMedida === Constantes.AL_GUSTO) { // Si es al gusto devuelve el nombre del ingrediente y al gusto
         return `${ingrediente.nombre} ${Constantes.AL_GUSTO}`;
       } else {
-        const cantidad = this.cantidadIngrediente(ingrediente.cantidad);
+        const cantidad = this.cantidadIngrediente(ingrediente.cantidad); // Devuelve la cantidad del ingrediente
         return `${cantidad} ${ingrediente.unidadMedida}(s) de ${ingrediente.nombre}`;
       }
     },
@@ -105,13 +105,13 @@ export default {
       return ((cantidad * this.porciones) / this.receta.porciones).toFixed(1);
     },
   },
-  async mounted() {
-    const idReceta = this.$route.params.id;
-    const receta = await RecetasService.obtenerRecetaPorId(idReceta);
-    // Arreglar los pasos porque los regresa como objetos
+  async mounted() { // Cuando se monta el componente
+    const idReceta = this.$route.params.id;  // Obtiene el id de la receta
+    const receta = await RecetasService.obtenerRecetaPorId(idReceta); // Obtiene la receta por id
+    // Arregla los pasos porque los regresa como objetos
     receta.pasos = receta.pasos.map((objetoPaso) => objetoPaso.paso);
-    this.receta = receta;
-    this.porciones = this.receta.porciones;
+    this.receta = receta; // Asigna la receta
+    this.porciones = this.receta.porciones; // Asigna las porciones
   },
 };
 </script>

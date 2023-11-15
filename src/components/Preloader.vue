@@ -1,4 +1,4 @@
-<template>
+<template> <!-- Aqui se muestra el preloader -->
     <div class="preloader-container">
       <img src="../assets/img/preloader.gif" alt="Preloader" />
     </div>
